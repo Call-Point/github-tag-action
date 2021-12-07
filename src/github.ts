@@ -68,18 +68,20 @@ export async function compareCommits(baseRef: string, headRef: string) {
 export async function createTag(
   newTag: string,
   createAnnotatedTag: boolean,
-  GITHUB_SHA: string
+  GITHUB_SHA: string,
+  tagMessage: string
 ) {
   const octokit = getOctokitSingleton();
   let annotatedTag:
     | Await<ReturnType<typeof octokit.git.createTag>>
     | undefined = undefined;
   if (createAnnotatedTag) {
-    core.debug(`Creating annotated tag.`);
+    const message = tagMessage || newTag;
+    core.info(`Creating annotated tag (${newTag}) with message (${message})`);
     annotatedTag = await octokit.git.createTag({
       ...context.repo,
       tag: newTag,
-      message: newTag,
+      message: message,
       object: GITHUB_SHA,
       type: 'commit',
     });

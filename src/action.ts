@@ -26,6 +26,7 @@ export default async function main() {
   const preReleaseBranches = core.getInput('pre_release_branches');
   const appendToPreReleaseTag = core.getInput('append_to_pre_release_tag');
   const createAnnotatedTag = !!core.getInput('create_annotated_tag');
+  const tagMessage = core.getInput('tag_message')
   const dryRun = core.getInput('dry_run');
   const customReleaseRules = core.getInput('custom_release_rules');
   const shouldFetchAllTags = core.getInput('fetch_all_tags');
@@ -226,5 +227,5 @@ export default async function main() {
     return;
   }
 
-  await createTag(newTag, createAnnotatedTag, commitRef);
+  await createTag(newTag, createAnnotatedTag, commitRef, tagMessage);
 }

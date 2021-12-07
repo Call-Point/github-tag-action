@@ -51,6 +51,9 @@ inputs:
     description: "Boolean to create an annotated tag rather than lightweight."
     required: false
     default: "false"
+  tag_message:
+    description: "Set a custom tag message (only used when creating annotated tags)."
+    required: false
   fetch_all_tags:
     description: "Boolean to fetch all tags for a repo (if false, only the last 100 will be fetched)."
     required: false
