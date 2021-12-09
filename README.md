@@ -19,6 +19,7 @@ jobs:
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
+          bump: patch
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
@@ -44,14 +45,17 @@ jobs:
 
 #### Customize the tag
 
-- **default_bump** _(optional)_ - Which type of bump to use when [none is explicitly provided](#bumping) when commiting to a release branch (default: `patch`). You can also set `false` to avoid generating a new tag when none is explicitly provided. Can be `patch, minor or major`.
-- **default_prerelease_bump** _(optional)_ - Which type of bump to use when [none is explicitly provided](#bumping) when commiting to a prerelease branch (default: `prerelease`). You can also set `false` to avoid generating a new tag when none is explicitly provided. Can be `prerelease, prepatch, preminor or premajor`.
+- **bump** _(optional)_ - Which type of bump to use (default: `patch`). Can be `patch, minor or major`.
 - **custom_tag** _(optional)_ - Custom tag name. If specified, it overrides bump settings.
 - **create_annotated_tag** _(optional)_ - Boolean to create an annotated rather than a lightweight one (default: `false`).
 - **tag_prefix** _(optional)_ - A prefix to the tag name (default: `v`).
 - **tag_message** _(optional)_ - A custom tag message if annotated (default: `<new_tag>`).
 - **append_to_pre_release_tag** _(optional)_ - A suffix to the pre-release tag name (default: `<branch>`).
 
+**FUTURE TODO**
+Requires a code update, but we disabled this when we refactored `default_bump` -> `bump` to avoid unpredictable tag versions based on commit messages.
+
+- **default_prerelease_bump** _(optional)_ - Which type of bump to use when [none is explicitly provided](#bumping) when commiting to a prerelease branch (default: `prerelease`). You can also set `false` to avoid generating a new tag when none is explicitly provided. Can be `prerelease, prepatch, preminor or premajor`.
 #### Customize the conventional commit messages & titles of changelog sections
 
 - **custom_release_rules** _(optional)_ - Comma separated list of release rules.
@@ -77,7 +81,7 @@ jobs:
 
 > **_Note:_** This action creates a [lightweight tag](https://developer.github.com/v3/git/refs/#create-a-reference) by default.
 
-### Bumping
+### 🚨 Commit Bumping Disabled 🚨
 
 The action will parse the new commits since the last tag using the [semantic-release](https://github.com/semantic-release/semantic-release) conventions.
 

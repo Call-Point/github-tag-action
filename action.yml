@@ -16,14 +16,15 @@ inputs:
   github_token:
     description: "Required for permission to tag the repo."
     required: true
-  default_bump:
-    description: "Which type of bump to use when none explicitly provided when commiting to a release branch (default: `patch`)."
+  bump:
+    description: "Which type of bump to use when none explicitly provided when committing to a release branch (default: `patch`)."
     required: false
     default: "patch"
-  default_prerelease_bump:
-    description: "Which type of bump to use when none explicitly provided when commiting to a prerelease branch (default: `prerelease`)."
-    required: false
-    default: "prerelease"
+  # TODO: currently disabled
+  # default_prerelease_bump:
+  #   description: "Which type of bump to use when none explicitly provided when committing to a prerelease branch (default: `prerelease`)."
+  #   required: false
+  #   default: "prerelease"
   tag_prefix:
     description: "A prefix to the tag name (default: `v`)."
     required: false

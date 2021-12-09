@@ -97,11 +97,11 @@ describe('github-tag-action', () => {
       expect(mockSetFailed).not.toBeCalled();
     });
 
-    it('does not create tag without commits and default_bump set to false', async () => {
+    it('does not create tag without commits and bump set to false', async () => {
       /*
        * Given
        */
-      setInput('default_bump', 'false');
+      setInput('bump', 'false');
       const commits: any[] = [];
       jest
         .spyOn(utils, 'getCommits')
@@ -453,7 +453,7 @@ describe('github-tag-action', () => {
       setInput('pre_release_branches', 'prerelease');
     });
 
-    it('does not create tag without commits and default_bump set to false', async () => {
+    it('does not create tag without commits and bump set to false', async () => {
       /*
        * Given
        */
